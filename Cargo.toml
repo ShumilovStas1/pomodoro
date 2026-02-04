@@ -1,0 +1,8 @@
+[package]
+name = "pomodoro"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+indicatif = "0.18.3"
+crossterm = "0.29.0"
