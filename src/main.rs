@@ -14,14 +14,14 @@ fn main() {
     });
     let pause_flag = Arc::new(AtomicBool::new(false));
     let exit_flag = Arc::new(AtomicBool::new(false));
-    let mut pomodoro = app::pomodoro::Pomodoro::new(conf, pause_flag.clone(), exit_flag.clone());
+    let mut pomodoro = app::pomodoro::Pomodoro::default(conf, pause_flag.clone(), exit_flag.clone());
 
     let handle = thread::spawn(move || {
         pomodoro.start();
     });
     match register_listeners(pause_flag, exit_flag, handle) {
         Ok(_) => {
-            println!("\nExiting Pomodoro Timer. Goodbye!");
+            println!("Exiting Pomodoro Timer. Goodbye!");
         },
         Err(e) => {
             eprintln!("Error in console listener: {:?}", e);
